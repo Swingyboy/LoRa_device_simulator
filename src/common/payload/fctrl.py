@@ -168,7 +168,7 @@ class _FctrlDown:
     def from_fields(cls, fields: dict) -> _FctrlDown:
         obj = cls()
         obj.adr=fields.get("adr")
-        obj.adr_ack_req=fields.get("adr_ack_req")
+        obj.ack=fields.get("ack")
         obj.fpending=fields.get("fpending")
         obj.fopts_len=fields.get("fopts_len")
         return obj
@@ -180,7 +180,7 @@ class Fctrl:
         if uplink:
             return _FctrlUp.from_fields(fields)
         else:
-            return _FctrlDown(**fields)
+            return _FctrlDown.from_fields(fields)
 
     @classmethod
     def from_bits(cls, bits: int, uplink: bool) -> typing.Union[_FctrlDown, _FctrlUp]:
